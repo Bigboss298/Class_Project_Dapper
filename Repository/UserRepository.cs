@@ -10,11 +10,12 @@ namespace CLH_Dapper.Repository
           public UserRepository(DataContext context)
           {
                _context = context;
+               _context.UserTable();
           }
 
           public User Create(User user)
           {
-               var qry = $"insert into user(Id, Name, Email, Pin, PhoneNumber, AddressId, IsDeleted) values('{user.Id}', {user.Name}, '{user.Email}', {user.Pin}, '{user.PhoneNumber}', '{user.AddressId}', {user.IsDeleted})";
+               var qry = $"insert into user(Id, Name, Email, Pin, PhoneNumber, AddressId, IsDeleted) values('{user.Id}', '{user.Name}', '{user.Email}', {user.Pin}, '{user.PhoneNumber}', '{user.AddressId}', {user.IsDeleted})";
                using(var connect = _context.Connection())
                {
                    var row = connect.Execute(qry);

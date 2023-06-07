@@ -40,7 +40,7 @@ namespace CLH_Dapper.Data
 
         public void UserTable()
         {
-          var qry = "create table if not exists address (Id varchar(225), Name varchar(20), Email varchar(20), Pin int, PhoneNumber varchar(16), AddressId varchar(20), IsDeleted tinyint)";
+          var qry = "create table if not exists user (Id varchar(225), Name varchar(20), Email varchar(20), Pin int, PhoneNumber varchar(16), AddressId varchar(20), IsDeleted tinyint)";
           using(var connection = Connection())
           {
                connection.Query(qry);

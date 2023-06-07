@@ -47,19 +47,25 @@ namespace CLH_Dapper.Services
                {
                     RoleId = role.Id,
                     UserId = user.Id,
+                    Role = role,
+                    User = user,
                };
 
                user.UserRoles.Add(userRole);
+
 
                var instructor = new Instructor
                {
                     UserId = user.Id,
                };
+               _instRepo.Create(instructor);
 
-               
                return new InstructorDto
                {
-
+                    Name = user.Name,
+                    AddressId = address.Id,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber,
                };
 
 

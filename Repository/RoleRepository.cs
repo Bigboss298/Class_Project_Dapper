@@ -11,11 +11,12 @@ namespace CLH_Dapper.Repository
         public RoleRepository(DataContext context)
         {
           _context = context;
+          _context.RoleTable();
         }
 
         public Role Create(Role role)
         {
-          var qry = $"Insert into Role(Id,Name,Description,IsDeleted) values({role.Id},{role.Name},{role.Description},{role.IsDeleted})";
+          var qry = $"Insert into Role(Id,Name,Description,IsDeleted) values('{role.Id}','{role.Name}','{role.Description}',{role.IsDeleted})";
           using (var connect = _context.Connection())
           {
              var row = connect.Execute(qry); 
@@ -42,7 +43,7 @@ namespace CLH_Dapper.Repository
 
         public Role GetByName(string name)
         {
-          var qry = $"select * from Role where Name = {name}";
+          var qry = $"select * from Role where Name = '{name}'";
           using (var connect = _context.Connection())
           {
                var role = connect.QuerySingleOrDefault<Role>(qry);

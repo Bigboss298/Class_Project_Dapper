@@ -10,6 +10,7 @@ namespace CLH_Dapper.Repository
           public InstructorRepository(DataContext context)
           {
                _context = context;
+               _context.InstructorTable();
           }
           public Instructor Create(Instructor instructor)
           {

@@ -10,11 +10,12 @@ namespace CLH_Dapper.Repository
           public AddressRepository(DataContext context)
           {
                _context = context;
+               _context.AddressTable();
           }
 
           public Address Create(Address address)
           {
-               var qry = $"insert into address(Id, Number, Street, City, IsDeleted) values('{address.Id}', {address.Number}, '{address.Street}', '{address.City}', '{address.IsDeleted}')";
+               var qry = $"insert into address(Id, Number, Street, City, IsDeleted) values('{address.Id}', {address.Number}, '{address.Street}', '{address.City}', {address.IsDeleted})";
                using(var connect = _context.Connection())
                {
                    var row = connect.Execute(qry);
